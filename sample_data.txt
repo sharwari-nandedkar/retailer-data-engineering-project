@@ -1,0 +1,119 @@
+Dummy Data:
+
+1. Customers table
+FULL LOAD (overwrite)
+
+create table customers(
+CustomerID varchar(20),
+firstname varchar(40),
+lastname  varchar(40),
+mail varchar(40),
+mobilenumber varchar(10),	
+gender	varchar(5),
+city varchar(20)
+);
+
+insert into customers('c1','Ajay','jain','Ajay@gmail.com','9820102292','M','Chennai');
+insert into customers('c2','Krish','agarwal','Krish@gmail.com','9820102293','M','Bangalore');
+insert into customers('c3','Shweta','Reddy','Shweta@gmail.com','9820102294','F','Chennai');
+insert into customers('c4','Ram','kochar','Ram@gmail.com','9820102295','M','Guntur');
+insert into customers('c5','lalita','ambani','lalita@gmail.com','9820102296','F','Trivendrum');
+
+
+# changes of c3 from Chennai to Bangalore, c5 from 9820102296 to 9820102297 (current date)
+insert into customers('c1','Ajay','jain','Ajay@gmail.com','9820102292','M','Chennai');
+insert into customers('c2','Krish','agarwal','Krish@gmail.com','9820102293','M','Bangalore');
+insert into customers('c3','Shweta','Reddy','Shweta@gmail.com','9820102294','F','Bangalore');
+insert into customers('c4','Ram','kochar','Ram@gmail.com','9820102295','M','Guntur');
+insert into customers('c5','lalita','ambani','lalita@gmail.com','9820102297','F','Trivendrum');
+
+------------------------------------------------------------------------------------------------
+2. Reviews table
+APPEND
+
+Create table reviews
+(
+review_id varchar(10),
+cust_id  varchar(10),
+review_text varchar(1000),
+prod_id varchar(10),
+rating int, 
+reviewdate varchar(20)
+);
+
+# day1
+insert into reviews values('REVW001','C1','product is not good','PROD001',5,'2024-09-10');
+insert into reviews values('REVW002','C2','Nice product','PROD003',4,'2024-09-10');
+insert into reviews values('REVW003','C3','worthy product','PROD004',3,'2024-09-10');
+insert into reviews values('REVW004','C4','use less product','PROD002',2,'2024-09-10');
+insert into reviews values('REVW005','C3','product is not good','PROD001',1,'2024-09-10');
+insert into reviews values('REVW006','C2','Nice product','PROD003',5,'2024-09-10');
+
+# day2
+insert into reviews values('REVW007','C5','worthable product','PROD002',4,'2024-09-11');
+insert into reviews values('REVW008','C2','use less product','PROD003',1,'2024-09-11');
+insert into reviews values('REVW009','C3','product is not good','PROD001',2,'2024-09-11');
+insert into reviews values('REVW010','C4','Nice product','PROD004',5,'2024-09-11');
+insert into reviews values('REVW011','C1','worthy product','PROD004',4,'2024-09-11');
+
+# day3
+insert into reviews values('REVW012','C1','use less product','PROD002',3,'2024-09-12');
+insert into reviews values('REVW013','C2','product is not good','PROD003',2,'2024-09-12');
+insert into reviews values('REVW014','C3','Nice product','PROD004',4,'2024-09-12');
+insert into reviews values('REVW015','C4','product is not good','PROD001',1,'2024-09-12');
+insert into reviews values('REVW016','C1','Nice product','PROD002',5,'2024-09-12');
+insert into reviews values('REVW017','C5','worthy product','PROD003',4,'2024-09-12');
+
+-----------------------------------------------------------------------------------------------
+3. Products table
+SCD typ1
+
+create table products
+(
+productid varchar(10),
+productname  varchar(100),
+productprice varchar(10),
+categoriesid varchar(10),
+lastmodifieddate varchar(20)
+);
+
+
+
+insert into products values('PROD001','Mobile','20000','CAT001','2024-09-10');
+insert into products values('PROD002','Laptop','30000','CAT002','2024-09-10');
+insert into products values('PROD003','Tshirt','990','CAT003','2024-09-10');
+
+#
+insert into products values('PROD002','Laptop','40000','CAT002','2024-09-11');
+insert into products values('PROD004','MixerGrainder','5000','CAT004','2024-09-11');
+insert into products values('PROD003','Tshirt','1500','CAT003','2024-09-11');
+
+------------------------------------------------------------------------------------------
+4. Categories table
+FULL LOAD (overwrite)
+
+create table categories
+(
+categoryID	varchar(20),
+categoryName varchar(100),
+ParentcategoryID varchar(20)
+)
+
+
+insert into categories values('CAT001','Electronics',NULL);
+insert into categories values('CAT002','Mobiles & Accessories','CAT001');
+insert into categories values('CAT003','Computers','CAT001');
+insert into categories values('CAT004','Clothing And Accessories',NULL);
+insert into categories values('CAT005','Menswear','CAT004')
+
+#
+insert into categories values('CAT001','Electronics',NULL);
+insert into categories values('CAT002','Mobiles & Accessories','CAT001');
+insert into categories values('CAT003','Computers','CAT001');
+insert into categories values('CAT004','Clothing And Accessories',NULL);
+insert into categories values('CAT005','Menswear','CAT004');
+insert into categories values('CAT006','Home appliances',NULL);
+insert into categories values('CAT007','mixer and grinder','CAT006')
+
+----------------------------------------------------------------------------------------
+

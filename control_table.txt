@@ -1,0 +1,18 @@
+Control Table
+create table cntrl_tbl
+(
+	table_name varchar(20)
+	,source_name varchar(20)
+	,table_type varchar(20)
+	,incremental_col varchar(100)
+	,ingestion_dt varchar(20)
+);
+insert into dbo.cntrl_tbl values('reviews','source1','Incremental_append','reviewdate','2024-09-10');
+
+insert into dbo.cntrl_tbl values('products','source1','incremental_merge','lastmodifieddate','2024-09-10');
+
+insert into dbo.cntrl_tbl(table_name,source_name,table_type) values('categories','source1','full_load');
+
+insert into dbo.cntrl_tbl(table_name,source_name,table_type) values('customers','source1','incremental_merge');
+
+------------------------------------------------------------------------------------------

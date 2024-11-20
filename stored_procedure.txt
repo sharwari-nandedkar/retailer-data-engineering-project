@@ -1,0 +1,13 @@
+Stored procedure syntax:
+
+create procedure updateingestiondt
+@ingestiondt varchar(20),
+@tablename varchar(20)
+AS
+BEGIN
+
+update dbo.cntrl_tbl set  ingestion_dt=convert(VARCHAR(10),DATEADD(day, 1, convert(date, @ingestiondt))) where table_name =@tablename 
+
+END
+
+------------------------------------------------------------------------------------------
