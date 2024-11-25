@@ -3,6 +3,9 @@
 ## Introduction
 The objective of this project is to design and implement a scalable data pipeline using Azure Cloud. The pipeline ingests multiple source tables from an on-premises SQL Server and loads them into Azure Data Lake Storage Gen2 (ADLS Gen2). Leveraging the medallion architecture, the pipeline processes and transforms the ingested data through bronze, silver, and gold layers. The refined data stored in the gold layer is optimized for reporting and analytics purposes, ensuring high-quality insights for business use cases.
 
+## Architecture
+![architecture](architecture.png)
+
 ## Technology Used
 1. Programing Language - Python
 2. Scripting Language - SQL
